@@ -1,0 +1,59 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     @TRIS_C
+021-022 delay400ms.i
+023     delay400ms.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  delay400ms
+000024  MAIN
+000024  @cinit1
+000030  @cinit2
+
+Project Directory:
+    E:\VDK-TrongTan\2.2\
+
+Project Files:
+    vd2.2.c                                                 [04-Aug-20 09:47  CRC=7015CE7E]
+    C:\Program Files (x86)\PICC\Devices\16F877A.h           [12-Nov-13 14:35  CRC=81334808]
+
+Source signature=727C5E8E
+
+Units:
+    vd2.2 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   vd2.2.xsym
+    Errors:      vd2.2.err
+    Ext Symbols: vd2.2.esym
+    INHX8:       vd2.2.hex
+    Symbols:     vd2.2.sym
+    List:        vd2.2.lst
+    Debug/COFF:  vd2.2.cof
+    Project:     vd2.2.ccspjt
+    Call Tree:   vd2.2.tre
+    Statistics:  vd2.2.STA

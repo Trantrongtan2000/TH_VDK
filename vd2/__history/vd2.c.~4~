@@ -1,0 +1,20 @@
+#include <16F877A.h>
+#fuses NOWDT, HS, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP
+#use delay(clock=8M)
+#include <lcd.c>
+void main(void)
+{
+lcd_init();
+lcd_gotoxy(1,1);
+printf(lcd_putc,"Counter:");
+delay_ms(3);
+int8 dem=0;
+While(dem<100)
+{
+lcd_gotoxy(1,2);
+printf(lcd_putc,"%i",dem);
+delay_ms(300);
+dem++;
+}
+}
+

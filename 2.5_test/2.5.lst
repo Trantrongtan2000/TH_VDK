@@ -1,0 +1,396 @@
+CCS PCM C Compiler, Version 5.015, 5967               11-Aug-20 07:57
+
+               Filename:   G:\VDK-TrongTan\2.5_test\2.5.lst
+
+               ROM used:   300 words (4%)
+                           Largest free fragment is 2048
+               RAM used:   19 (5%) at main() level
+                           23 (6%) worst case
+               Stack used: 2 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0D4
+0003:  NOP
+.................... #include <16F877A.h> 
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+0004:  BCF    0A.0
+0005:  BCF    0A.1
+0006:  BCF    0A.2
+0007:  ADDWF  02,F
+0008:  RETLW  03
+0009:  RETLW  9F
+000A:  RETLW  25
+000B:  RETLW  0D
+000C:  RETLW  99
+000D:  RETLW  49
+000E:  RETLW  41
+000F:  RETLW  1F
+0010:  RETLW  01
+0011:  RETLW  09
+0012:  MOVF   30,W
+0013:  CLRF   78
+0014:  SUBWF  2F,W
+0015:  BTFSC  03.0
+0016:  GOTO   01A
+0017:  MOVF   2F,W
+0018:  MOVWF  77
+0019:  GOTO   026
+001A:  CLRF   77
+001B:  MOVLW  08
+001C:  MOVWF  31
+001D:  RLF    2F,F
+001E:  RLF    77,F
+001F:  MOVF   30,W
+0020:  SUBWF  77,W
+0021:  BTFSC  03.0
+0022:  MOVWF  77
+0023:  RLF    78,F
+0024:  DECFSZ 31,F
+0025:  GOTO   01D
+0026:  RETURN
+....................  
+.................... #list 
+....................  
+.................... #fuses NOWDT, HS, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP 
+.................... #use delay(clock=8M) 
+0027:  MOVLW  30
+0028:  MOVWF  04
+0029:  BCF    03.7
+002A:  MOVF   00,W
+002B:  BTFSC  03.2
+002C:  GOTO   03A
+002D:  MOVLW  02
+002E:  MOVWF  78
+002F:  CLRF   77
+0030:  DECFSZ 77,F
+0031:  GOTO   030
+0032:  DECFSZ 78,F
+0033:  GOTO   02F
+0034:  MOVLW  97
+0035:  MOVWF  77
+0036:  DECFSZ 77,F
+0037:  GOTO   036
+0038:  DECFSZ 00,F
+0039:  GOTO   02D
+003A:  RETURN
+.................... #INT_TIMER1 
+.................... int8 dv,chuc,dem; 
+.................... int8 den[9]={0x00,0x01,0x03,0x07,0x0f,0x1f,0x3f,0x7f,0xff}; 
+*
+00E1:  BCF    03.5
+00E2:  CLRF   23
+00E3:  MOVLW  01
+00E4:  MOVWF  24
+00E5:  MOVLW  03
+00E6:  MOVWF  25
+00E7:  MOVLW  07
+00E8:  MOVWF  26
+00E9:  MOVLW  0F
+00EA:  MOVWF  27
+00EB:  MOVLW  1F
+00EC:  MOVWF  28
+00ED:  MOVLW  3F
+00EE:  MOVWF  29
+00EF:  MOVLW  7F
+00F0:  MOVWF  2A
+00F1:  MOVLW  FF
+00F2:  MOVWF  2B
+.................... const int8 led[10]={0x03,0x9f,0x25,0x0d,0x99,0x49,0x41,0x1f,0x01,0x09}; 
+.................... void qled() 
+.................... {   
+....................    output_low(pin_D3); 
+*
+003B:  BSF    03.5
+003C:  BCF    08.3
+003D:  BCF    03.5
+003E:  BCF    08.3
+....................    output_low(pin_D2); 
+003F:  BSF    03.5
+0040:  BCF    08.2
+0041:  BCF    03.5
+0042:  BCF    08.2
+....................    output_low(pin_D1); 
+0043:  BSF    03.5
+0044:  BCF    08.1
+0045:  BCF    03.5
+0046:  BCF    08.1
+....................    output_high(pin_D0); 
+0047:  BSF    03.5
+0048:  BCF    08.0
+0049:  BCF    03.5
+004A:  BSF    08.0
+....................    output_b(led[chuc]); 
+004B:  MOVF   21,W
+004C:  CALL   004
+004D:  MOVWF  2F
+004E:  BSF    03.5
+004F:  CLRF   06
+0050:  BCF    03.5
+0051:  MOVF   2F,W
+0052:  MOVWF  06
+....................    delay_ms(3); 
+0053:  MOVLW  03
+0054:  MOVWF  30
+0055:  CALL   027
+....................    output_high(pin_D1); 
+0056:  BSF    03.5
+0057:  BCF    08.1
+0058:  BCF    03.5
+0059:  BSF    08.1
+....................    output_high(pin_D2); 
+005A:  BSF    03.5
+005B:  BCF    08.2
+005C:  BCF    03.5
+005D:  BSF    08.2
+....................    output_high(pin_D3); 
+005E:  BSF    03.5
+005F:  BCF    08.3
+0060:  BCF    03.5
+0061:  BSF    08.3
+....................  
+....................    output_low(pin_D3); 
+0062:  BSF    03.5
+0063:  BCF    08.3
+0064:  BCF    03.5
+0065:  BCF    08.3
+....................    output_low(pin_D1); 
+0066:  BSF    03.5
+0067:  BCF    08.1
+0068:  BCF    03.5
+0069:  BCF    08.1
+....................    output_low(pin_D0); 
+006A:  BSF    03.5
+006B:  BCF    08.0
+006C:  BCF    03.5
+006D:  BCF    08.0
+....................    output_high(pin_D2); 
+006E:  BSF    03.5
+006F:  BCF    08.2
+0070:  BCF    03.5
+0071:  BSF    08.2
+....................    output_b(led[dv]); 
+0072:  MOVF   20,W
+0073:  CALL   004
+0074:  MOVWF  2F
+0075:  BSF    03.5
+0076:  CLRF   06
+0077:  BCF    03.5
+0078:  MOVF   2F,W
+0079:  MOVWF  06
+....................    delay_ms(3); 
+007A:  MOVLW  03
+007B:  MOVWF  30
+007C:  CALL   027
+....................    output_high(pin_D0); 
+007D:  BSF    03.5
+007E:  BCF    08.0
+007F:  BCF    03.5
+0080:  BSF    08.0
+....................    output_high(pin_D1); 
+0081:  BSF    03.5
+0082:  BCF    08.1
+0083:  BCF    03.5
+0084:  BSF    08.1
+....................    output_high(pin_D2); 
+0085:  BSF    03.5
+0086:  BCF    08.2
+0087:  BCF    03.5
+0088:  BSF    08.2
+....................     
+....................    output_low(pin_D0); 
+0089:  BSF    03.5
+008A:  BCF    08.0
+008B:  BCF    03.5
+008C:  BCF    08.0
+....................    output_low(pin_D1); 
+008D:  BSF    03.5
+008E:  BCF    08.1
+008F:  BCF    03.5
+0090:  BCF    08.1
+....................    output_low(pin_D2); 
+0091:  BSF    03.5
+0092:  BCF    08.2
+0093:  BCF    03.5
+0094:  BCF    08.2
+....................    output_high(pin_D3); 
+0095:  BSF    03.5
+0096:  BCF    08.3
+0097:  BCF    03.5
+0098:  BSF    08.3
+....................    output_b(0xe0); 
+0099:  BSF    03.5
+009A:  CLRF   06
+009B:  MOVLW  E0
+009C:  BCF    03.5
+009D:  MOVWF  06
+....................    delay_ms(3); 
+009E:  MOVLW  03
+009F:  MOVWF  30
+00A0:  CALL   027
+....................    output_high(pin_D2); 
+00A1:  BSF    03.5
+00A2:  BCF    08.2
+00A3:  BCF    03.5
+00A4:  BSF    08.2
+....................    output_high(pin_D0); 
+00A5:  BSF    03.5
+00A6:  BCF    08.0
+00A7:  BCF    03.5
+00A8:  BSF    08.0
+....................    output_high(pin_D1); 
+00A9:  BSF    03.5
+00AA:  BCF    08.1
+00AB:  BCF    03.5
+00AC:  BSF    08.1
+....................     
+....................    output_low(pin_D0); 
+00AD:  BSF    03.5
+00AE:  BCF    08.0
+00AF:  BCF    03.5
+00B0:  BCF    08.0
+....................    output_low(pin_D2); 
+00B1:  BSF    03.5
+00B2:  BCF    08.2
+00B3:  BCF    03.5
+00B4:  BCF    08.2
+....................    output_low(pin_D3); 
+00B5:  BSF    03.5
+00B6:  BCF    08.3
+00B7:  BCF    03.5
+00B8:  BCF    08.3
+....................    output_high(pin_D1); 
+00B9:  BSF    03.5
+00BA:  BCF    08.1
+00BB:  BCF    03.5
+00BC:  BSF    08.1
+....................    output_b(0x63); 
+00BD:  BSF    03.5
+00BE:  CLRF   06
+00BF:  MOVLW  63
+00C0:  BCF    03.5
+00C1:  MOVWF  06
+....................    delay_ms(3); 
+00C2:  MOVLW  03
+00C3:  MOVWF  30
+00C4:  CALL   027
+....................    output_high(pin_D2); 
+00C5:  BSF    03.5
+00C6:  BCF    08.2
+00C7:  BCF    03.5
+00C8:  BSF    08.2
+....................    output_high(pin_D0); 
+00C9:  BSF    03.5
+00CA:  BCF    08.0
+00CB:  BCF    03.5
+00CC:  BSF    08.0
+....................    output_high(pin_D3); 
+00CD:  BSF    03.5
+00CE:  BCF    08.3
+00CF:  BCF    03.5
+00D0:  BSF    08.3
+00D1:  BCF    0A.3
+00D2:  BCF    0A.4
+00D3:  GOTO   129 (RETURN)
+....................  
+.................... } 
+.................... void main(void) 
+00D4:  MOVF   03,W
+00D5:  ANDLW  1F
+00D6:  MOVWF  03
+00D7:  MOVLW  FF
+00D8:  MOVWF  2C
+00D9:  BSF    03.5
+00DA:  BSF    1F.0
+00DB:  BSF    1F.1
+00DC:  BSF    1F.2
+00DD:  BCF    1F.3
+00DE:  MOVLW  07
+00DF:  MOVWF  1C
+00E0:  BCF    03.7
+.................... {  
+.................... enable_interrupts(GLOBAL); 
+*
+00F3:  MOVLW  C0
+00F4:  IORWF  0B,F
+.................... enable_interrupts(INT_TIMER1); 
+00F5:  BSF    03.5
+00F6:  BSF    0C.0
+.................... setup_timer_1(T1_INTERNAL|T1_DIV_BY_1); 
+00F7:  MOVLW  85
+00F8:  BCF    03.5
+00F9:  MOVWF  10
+.................... for (int8 dem=0; dem<50;dem++) 
+00FA:  CLRF   2D
+00FB:  MOVF   2D,W
+00FC:  SUBLW  31
+00FD:  BTFSS  03.0
+00FE:  GOTO   12B
+....................    { 
+....................    dv=dem%10; 
+00FF:  MOVF   2D,W
+0100:  MOVWF  2F
+0101:  MOVLW  0A
+0102:  MOVWF  30
+0103:  CALL   012
+0104:  MOVF   77,W
+0105:  MOVWF  20
+....................    chuc=dem/10; 
+0106:  MOVF   2D,W
+0107:  MOVWF  2F
+0108:  MOVLW  0A
+0109:  MOVWF  30
+010A:  CALL   012
+010B:  MOVF   78,W
+010C:  MOVWF  21
+....................    for(int8 i=0;i<9;i++) 
+010D:  CLRF   2E
+010E:  MOVF   2E,W
+010F:  SUBLW  08
+0110:  BTFSS  03.0
+0111:  GOTO   121
+....................    output_c(den[i]);delay_ms(300); 
+0112:  MOVLW  23
+0113:  ADDWF  2E,W
+0114:  MOVWF  04
+0115:  BCF    03.7
+0116:  MOVF   00,W
+0117:  MOVWF  2F
+0118:  MOVLW  00
+0119:  MOVWF  2C
+011A:  BSF    03.5
+011B:  CLRF   07
+011C:  BCF    03.5
+011D:  MOVF   2F,W
+011E:  MOVWF  07
+011F:  INCF   2E,F
+0120:  GOTO   10E
+0121:  MOVLW  02
+0122:  MOVWF  2F
+0123:  MOVLW  96
+0124:  MOVWF  30
+0125:  CALL   027
+0126:  DECFSZ 2F,F
+0127:  GOTO   123
+....................    qled(); 
+0128:  GOTO   03B
+0129:  INCF   2D,F
+012A:  GOTO   0FB
+....................    } 
+.................... } 
+012B:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F3A   HS NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

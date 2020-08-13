@@ -1,0 +1,21 @@
+[PROJECT]
+Target=test23.hex
+Processor_Text=PIC16F877A
+CCSVersion=5.015
+Compiler=PCM
+[Target Data]
+FileList=test23.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[test23.c]
+Type=4
+[mru-list]
+1=test23.c
+[Opened Files]
+1=test23.c
+2=..\dv4\vd24.c
+3=..\vd2\vd2.c
+4=
+[Units]
+Count=1
+1=test23 (main)

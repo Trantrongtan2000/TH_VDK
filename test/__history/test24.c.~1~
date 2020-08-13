@@ -1,0 +1,26 @@
+#include <16F877A.h>
+#fuses NOWDT, HS, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP
+#use delay(clock=8M)
+#include <lcd.c>
+#define SW1 PIN_C3
+#define SW2 PIN_C4
+void main(void)
+{ int8 SW=0;
+while (TRUE)
+{lcd_init();
+if(!input(SW1)) SW=1;
+if(!input(SW2)) SW=2;
+switch(SW)
+{case 1: {
+lcd_gotoxy(1,1);
+printf(lcd_putc,"Xin chao cac ban!");
+delay_ms(300);
+SW=0;break;}
+case 2:{
+lcd_gotoxy(10,2);
+printf(lcd_putc,"HUTECH");
+delay_ms(300);
+SW=0;break;}}
+}
+}
+

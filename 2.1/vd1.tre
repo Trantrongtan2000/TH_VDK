@@ -1,0 +1,5 @@
+ÀÄ2
+   ÀÄMAIN  0/32  Ram=0
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄdelay400ms  0/35  Ram=2
+      ÀÄdelay400ms  0/35  Ram=2

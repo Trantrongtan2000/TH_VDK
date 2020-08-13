@@ -1,0 +1,52 @@
+#include <16F877A.h>
+#fuses NOWDT, HS, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP
+#use delay(clock=8M)
+int8 dv,chuc,cv;
+int8 dem[9]=[0x00,0x01,0x03,0x07,0x0f,0x1f,0x3f,0x7f,0xff]
+const int8 led1[10]=[0x03,0x94,0x25,0x0d,0x99,0x49,0x41,0x01,0x09]
+void d2_ms(int16 y)
+{
+for(int16 r = 0, r<y,r++);delay_us(1000);
+}
+#INT_TIMER_1
+void qled()
+{
+dv=cv%10;
+chuc=cv/10;
+
+output_d(0xff);
+output_b(0x63);
+output_low(PIN_D0);
+delay_ms(1);
+
+output_d(0xff);
+output_b(0xe0);
+output_low(PIN_D1);
+delay_ms(1);
+ 
+ output_d(0xff);
+ output_b(led1[dv]);
+ output_low(PIN_D3);
+ delay_ms(1);
+ 
+ output_d(0xff);
+ output_b(led1[chuc]);
+ output_low(PIN_D2);
+ delay_ms(1);
+}
+ void main ()
+ {
+ enable_interrupts(GLOBAL);
+ enable_interrupts(INT_TIMER1);
+ setup_timer_1(T1_INTERNAL| T1_DIV_BY_1);
+ while (cv<70)
+ {
+ for (int8 i = 0,i < 9,i++)
+ {
+ output_c(dem[i])
+ d2_ms(300)
+ }
+ dem=dem+1;
+ }
+ while(1)
+ }

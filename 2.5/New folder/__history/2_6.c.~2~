@@ -1,0 +1,4 @@
+#include <16F877A.h>
+#fuses NOWDT, HS, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP
+#use delay(clock=8M)
+int8 den=[0x

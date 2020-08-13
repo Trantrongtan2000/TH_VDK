@@ -1,0 +1,70 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     dv
+021     chuc
+022     tram
+023     dem
+024-025 MAIN.i
+026     @delay_ms1.P1
+026     qled.@SCRATCH1
+027     @DIV88.P1
+028     @DIV88.P1
+029     @DIV88.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  led.call
+000008  led.data
+000012  @DIV88
+000027  @delay_ms1
+00003B  qled
+0000B5  MAIN
+0000B5  @cinit1
+0000BF  @cinit2
+
+Project Directory:
+    G:\VDK-TrongTan\2.4\
+
+Project Files:
+    2.4.c                                                   [11-Aug-20 07:39  CRC=46A14BA4]
+    C:\Program Files (x86)\PICC\Devices\16F877A.h           [12-Nov-13 14:35  CRC=81334808]
+
+Source signature=4907DBB4
+
+Units:
+    2.4 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   2.4.xsym
+    Errors:      2.4.err
+    Ext Symbols: 2.4.esym
+    INHX8:       2.4.hex
+    Symbols:     2.4.sym
+    List:        2.4.lst
+    Debug/COFF:  2.4.cof
+    Project:     2.4.ccspjt
+    Call Tree:   2.4.tre
+    Statistics:  2.4.STA

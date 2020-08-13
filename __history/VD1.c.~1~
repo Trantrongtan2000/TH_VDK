@@ -1,0 +1,15 @@
+#include <vd1.h>
+#fuses NOWDT, HS, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP
+#use delay(clock=8M)
+void main(void)
+{
+
+   while(1)
+   {
+   Output_c(0x01);
+Delay_ms(400);
+Output_c(0x00);
+Delay_ms(400);
+}
+}
+

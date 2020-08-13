@@ -1,0 +1,21 @@
+[PROJECT]
+Target=vd25.hex
+Processor_Text=PIC16F877A
+CCSVersion=5.015
+Compiler=PCM
+[Target Data]
+FileList=vd25.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\DriversC:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[vd25.c]
+Type=4
+[mru-list]
+1=vd25.c
+[Opened Files]
+1=..\2.5\2.5.c
+2=..\2.4\2.4.c
+3=vd25.c
+4=
+[Units]
+Count=1
+1=vd25 (main)

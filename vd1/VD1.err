@@ -1,0 +1,4 @@
+>>> Warning 203 "VD1.c" Line 14(1,1): Condition always TRUE
+      Memory usage:   ROM=5%      RAM=1% - 5%
+      0 Errors,  1 Warnings.
+Build Successful.
